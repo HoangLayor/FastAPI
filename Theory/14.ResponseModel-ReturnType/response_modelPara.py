@@ -7,22 +7,28 @@ from pydantic import BaseModel
 app = FastAPI()
 
 
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-    tags: list[str] = []
+class UserBase(BaseModel):
+    username: str
+    email: str
 
-# When you want to return some data that is not exactly type declared
-# Path operation decorator parameters "response_model"
-@app.post("/items/", response_model=Item)
-async def create_item(item: Item) -> Any:
-    return item
+class UserIn(UserBase):
+    password: str
 
-@app.get("/items/", response_model=list[Item])
-async def read_items() -> Any:
-    return [
-        {"name": "Portal Gun", "price": 42.0},
-        {"name": "Plumbus", "price": 32.0},
-    ]
+class UserOut(UserBase):
+    id: int
+
+@app.post("/users/", response_model=UserOut)
+async def create_user(user: UserIn):
+    # Giả sử tạo user và trả về
+    return {"username": user.username, "email": user.email, "id": 1}
+
+'''
+- Xác thực dữ liệu:
+    + FastAPI sẽ tự động xác thực dữ liệu trả về dựa trên model đã định nghĩa.
+- Lọc dữ liệu:
+    + Nếu hàm trả về dữ liệu dư thừa, FastAPI sẽ tự động lọc bỏ các trường không có trong model.
+- Chuyển đổi kiểu dữ liệu:
+    + FastAPI sẽ tự động chuyển đổi dữ liệu sang định dạng phù hợp với model.
+- Bảo mật:
+    + Giúp ngăn chặn việc vô tình tiết lộ dữ liệu nhạy cảm.
+'''
