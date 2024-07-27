@@ -32,3 +32,6 @@ async def create_user(user: UserIn):
 - Bảo mật:
     + Giúp ngăn chặn việc vô tình tiết lộ dữ liệu nhạy cảm.
 '''
+
+# Priority : 
+# If you declare both a return type and a response_model, the response_model will take priority and be used by FastAPI.
