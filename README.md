@@ -1,2 +1,3 @@
 - Group Management Database : 
   - Link Lucidchart : https://lucid.app/lucidchart/20dc76bf-387e-446a-8fac-ec8dcee7028b/edit?viewport_loc=-1498%2C-888%2C2560%2C1210%2C0_0&invitationId=inv_1bf11714-c37d-4938-952a-272d5aae73f8
+  - Link Drive : https://drive.google.com/drive/folders/1OocRe3fZXfEFE1HP8l0Hjuzdn3eynMTf?usp=sharing
